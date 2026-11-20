@@ -1,0 +1,14 @@
+{
+  "name": "belly-n-bloom",
+  "version": "1.0.0",
+  "private": true,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "node dev.js",
+    "start": "node dev.js"
+  },
+  "dependencies": {
+    "@vercel/functions": "^2.0.0",
+    "nodemailer": "^6.9.16"
+  }
+}

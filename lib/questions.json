@@ -1,0 +1,205 @@
+[
+ {
+  "id": "practice",
+  "type": "single",
+  "title": "Which best describes your practice?",
+  "opts": [
+   "OB-GYN",
+   "Maternal-fetal medicine",
+   "Certified nurse-midwife",
+   "Family physician with obstetrics",
+   "Registered dietitian",
+   "Other"
+  ],
+  "n": 1
+ },
+ {
+  "id": "asks",
+  "type": "single",
+  "title": "How often do patients ask you what to eat or drink during pregnancy or breastfeeding?",
+  "opts": [
+   "At most visits",
+   "Often",
+   "Sometimes",
+   "Rarely"
+  ],
+  "n": 2
+ },
+ {
+  "id": "value",
+  "type": "scale",
+  "title": "Overall, how useful would stage-specific foods like these be for your patients?",
+  "lo": "Not useful",
+  "hi": "Very useful",
+  "n": 3
+ },
+ {
+  "id": "need",
+  "type": "multi",
+  "title": "At which stages do your patients most often struggle to meet their nutrition needs?",
+  "opts": [
+   "Before pregnancy",
+   "First trimester",
+   "Second trimester",
+   "Third trimester",
+   "Recovery after birth",
+   "Breastfeeding"
+  ],
+  "n": 4
+ },
+ {
+  "id": "trimester",
+  "type": "single",
+  "title": "Do nutrition needs differ enough between trimesters to justify a separate bar for each?",
+  "opts": [
+   "Yes, a bar for each trimester",
+   "Two bars would be enough (early and late pregnancy)",
+   "One pregnancy bar is enough",
+   "Not sure"
+  ],
+  "n": 5
+ },
+ {
+  "id": "postpartum",
+  "type": "single",
+  "title": "After birth we plan three bars: lactation, strength, and a combined bar. Which approach makes most sense to you?",
+  "opts": [
+   "All three",
+   "The combined bar only",
+   "Lactation and strength as separate bars",
+   "Not sure"
+  ],
+  "n": 6
+ },
+ {
+  "id": "traits",
+  "type": "multi",
+  "max": 3,
+  "title": "Which characteristics would matter most to you when considering these for patients?",
+  "opts": [
+   "Enough protein",
+   "Low added sugar",
+   "Iron",
+   "Folate",
+   "Choline",
+   "Fiber",
+   "Gentle on nausea",
+   "No herbs during pregnancy",
+   "Tested for heavy metals",
+   "Taste patients will accept"
+  ],
+  "n": 7
+ },
+ {
+  "id": "brews",
+  "type": "scale",
+  "title": "How useful would a caffeine-free drink for each stage be for your patients?",
+  "lo": "Not useful",
+  "hi": "Very useful",
+  "n": 8
+ },
+ {
+  "id": "herbs",
+  "type": "single",
+  "title": "What is your view of an optional lactation version with shatavari and moringa, sold as a supplement and labeled not for use in pregnancy?",
+  "opts": [
+   "Comfortable",
+   "Comfortable only if evidence and testing are shown",
+   "I would prefer the food-only version",
+   "I would not recommend it"
+  ],
+  "n": 9
+ },
+ {
+  "id": "recommend",
+  "type": "single",
+  "title": "If the products met your expectations, would you be comfortable recommending them to patients?",
+  "opts": [
+   "Yes",
+   "Yes, with conditions",
+   "Not sure",
+   "No"
+  ],
+  "n": 10
+ },
+ {
+  "id": "trust",
+  "type": "multi",
+  "title": "What would you need to see before recommending a product like this?",
+  "opts": [
+   "Formulated with a registered dietitian",
+   "An OB-GYN advisory board",
+   "Published testing results",
+   "A clinical study",
+   "Nutrient levels aligned with ACOG guidance",
+   "Samples to try yourself"
+  ],
+  "n": 11
+ },
+ {
+  "id": "registry",
+  "type": "single",
+  "title": "Would a Belly n Bloom bundle on a baby registry (for example a pregnancy box or a fourth-trimester box) appeal to your patients and their families?",
+  "opts": [
+   "Yes, very likely",
+   "Somewhat",
+   "Unlikely",
+   "Not sure"
+  ],
+  "n": 12
+ },
+ {
+  "id": "buy",
+  "type": "multi",
+  "title": "How do you think patients would most likely buy these?",
+  "opts": [
+   "Single bars or packs",
+   "Monthly subscription",
+   "One bundle per stage",
+   "Gift boxes for showers and registries",
+   "Not sure"
+  ],
+  "n": 13
+ },
+ {
+  "id": "where",
+  "type": "multi",
+  "title": "Where would your patients most likely look for products like these?",
+  "opts": [
+   "Baby registries (Babylist, Amazon, Target)",
+   "Online stores",
+   "Pharmacy",
+   "Grocery store",
+   "Baby and maternity stores",
+   "Samples or recommendations from their clinic",
+   "Hospital discharge or welcome kits"
+  ],
+  "n": 14
+ },
+ {
+  "id": "price",
+  "type": "single",
+  "title": "What price per bar do you think your patients would find reasonable?",
+  "opts": [
+   "Under $2",
+   "$2 to $3",
+   "$3 to $4",
+   "Over $4",
+   "Not sure"
+  ],
+  "n": 15
+ },
+ {
+  "id": "involve",
+  "type": "multi",
+  "title": "Would you be open to any of the following?",
+  "opts": [
+   "Trying samples",
+   "Sharing samples with patients",
+   "Joining a clinical advisory panel",
+   "A 15-minute follow-up call",
+   "None for now"
+  ],
+  "n": 16
+ }
+]

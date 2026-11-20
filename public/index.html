@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Belly n Bloom</title>
+<meta name="description" content="Belly n Bloom: everyday bars and caffeine-free brews for before, during and beyond pregnancy. Coming soon.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap">
+<style>
+/* Layout: two views on the brand's cream paper. Home is a quiet "growing" holding page; the review reads top to bottom, with a short question card right after each topic. Single light theme by choice: the logo's coral and deep green are drawn for cream. */
+:root{
+  color-scheme: light;
+  --paper:#FDF7F0; --card:#FFFDFA; --ink:#263021; --muted:#5C6455;
+  --green:#3D4F2B; --green-deep:#2C3A20; --green-soft:#E7EDDE; --coral:#B93D17; --coral-bright:#CF4A20; --coral-soft:#FBE7DC; --coral-light:#F6B59B;
+  --line:#E6D8C6; --tan:#CDBBA5;
+  --display:"Nunito","Trebuchet MS",system-ui,sans-serif;
+  --body:"Nunito Sans","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+.band{padding-block:48px}
+.in{max-width:1000px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:22px}
+.band.sage{background:var(--green-soft)}
+.band.blush{background:var(--coral-soft)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,5.4vw,3rem);line-height:1.08;font-weight:900;color:var(--green);letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--coral-bright)}
+h2{font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:800}
+.sub{font-family:var(--display);font-weight:800;font-size:clamp(1.4rem,3.4vw,1.85rem);line-height:1.2;color:var(--coral);margin:4px 0 0}
+h3{font-size:1.04rem;font-weight:800;color:var(--ink);line-height:1.25}
+p{margin:0;max-width:64ch}
+.lead{font-size:1.12rem}
+.muted{color:var(--muted);font-size:.9rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+a{color:var(--green);font-weight:700}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--coral-bright);outline-offset:2px}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:800;font-family:var(--display)}
+.btn{display:inline-block;text-decoration:none;font-family:var(--display);font-weight:800;border:0;border-radius:999px;padding:13px 28px;background:var(--coral-bright);color:#fff;align-self:flex-start;font-size:1rem}
+.btn:disabled{background:var(--tan);cursor:not-allowed}
+.addr{font-weight:800;user-select:all;overflow-wrap:anywhere}
+.glow{background:radial-gradient(620px 300px at 12% 0%,var(--coral-soft),transparent 70%),radial-gradient(560px 320px at 92% 12%,var(--green-soft),transparent 70%),var(--paper)}
+
+/* top admin bar */
+.admin-bar{position:absolute;top:18px;right:max(18px,env(safe-area-inset-right,18px));z-index:25}
+.admin-login-btn{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1.5px solid var(--line);border-radius:999px;padding:6px 16px;font-family:var(--display);font-size:.85rem;font-weight:800;color:var(--green);text-decoration:none;transition:all .15s;box-shadow:0 6px 16px -6px rgba(61,79,43,.18)}
+.admin-login-btn:hover{border-color:var(--coral-bright);color:var(--coral-bright);background:#fff}
+.admin-login-btn svg{width:14px;height:14px;flex:none}
+
+/* home */
+.home{min-height:100%;display:flex;flex-direction:column;position:relative}
+.home .in{align-items:center;text-align:center;gap:16px;padding-block:44px 28px;flex:1;justify-content:center}
+.home img.logo{width:min(480px,100%);height:auto}
+.tag{color:var(--green);font-family:var(--display);font-weight:700;letter-spacing:.03em}
+.grow{display:flex;justify-content:center;gap:6px;margin:6px 0 2px}
+.grow svg{width:46px;height:46px}
+.home h1{font-size:clamp(1.9rem,5vw,2.7rem)}
+.home .lead{max-width:52ch}
+.invite{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;max-width:560px;width:100%;display:flex;flex-direction:column;gap:10px;align-items:center;box-shadow:0 18px 40px -28px rgba(61,79,43,.55)}
+.invite .btn{align-self:center}
+.foot{padding-block:22px;color:var(--muted);font-size:.85rem}
+.foot .in{gap:4px}
+.home .foot .in{align-items:center;text-align:center}
+
+/* review: top bar and confidentiality */
+.topbar .in{flex-direction:row;align-items:center;justify-content:space-between;padding-block:14px;gap:12px}
+.topbar img{width:170px;height:auto}
+.gatewrap .in{align-items:center;padding-block:28px 56px}
+.gate{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 26px 28px;max-width:620px;display:flex;flex-direction:column;gap:12px;box-shadow:0 18px 40px -28px rgba(61,79,43,.55)}
+.gate ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
+.agree{display:flex;gap:10px;align-items:flex-start;font-weight:700;cursor:pointer}
+.agree input{width:20px;height:20px;accent-color:var(--coral-bright);margin-top:2px;flex:none}
+
+/* intro */
+.intro .in{flex-direction:row;flex-wrap:wrap;align-items:center;gap:32px}
+.intro .txt{flex:1 1 440px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.glance{flex:0 1 240px;display:grid;grid-template-columns:1fr;gap:10px;min-width:0}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 18px;display:flex;align-items:baseline;gap:12px}
+.fact b{font-family:var(--display);font-weight:900;font-size:2.1rem;line-height:1;color:var(--coral-bright);font-variant-numeric:tabular-nums;min-width:1.3em}
+.fact span{font-weight:700;color:var(--green)}
+
+/* journey */
+.rail{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;position:relative}
+.rail::before{content:"";position:absolute;left:10%;right:10%;top:36px;border-top:2px dashed var(--tan)}
+.stage{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0;position:relative}
+.bloom{width:72px;height:72px;background:var(--card);border:1.5px solid var(--line);border-radius:50%;padding:5px;flex:none}
+.box{background:var(--card);border-radius:16px;padding:14px 12px;width:100%;display:flex;flex-direction:column;gap:7px;flex:1;min-width:0}
+.when{font-family:var(--display);font-weight:800;color:var(--green);font-size:1rem;line-height:1.2;margin-bottom:2px}
+.kind{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:4px}
+.item{border-radius:10px;padding:7px 9px;font-weight:700;font-size:.88rem;line-height:1.3}
+.item.bar{background:var(--coral-soft);color:#7A2A10}
+.item.brew{background:var(--green-soft);color:var(--green)}
+.sage .box{background:var(--card)}
+
+/* cards, panels */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;gap:14px;align-items:flex-start;min-width:0}
+.ic{width:42px;height:42px;flex:none}
+.ct{display:flex;flex-direction:column;gap:4px;min-width:0}
+.st{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);font-weight:800}
+.ct p{font-size:.93rem}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.tags span{background:var(--green-soft);color:var(--green);border-radius:999px;padding:2px 10px;font-size:.78rem;font-weight:700}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.scroll{overflow-x:auto;position:relative}
+.matrix{border-collapse:collapse;width:100%;min-width:640px;font-size:.88rem}
+.matrix th,.matrix td{padding:9px 8px;text-align:center;border-bottom:1px solid var(--line)}
+.matrix tbody tr:last-child th,.matrix tbody tr:last-child td{border-bottom:0}
+.matrix thead th{font-family:var(--display);font-weight:800;color:var(--green);font-size:.8rem;vertical-align:bottom}
+.matrix th[scope=row],.matrix thead th:first-child{text-align:left;font-weight:700;white-space:nowrap}
+.dot{display:inline-block;border-radius:50%;background:var(--coral-bright);vertical-align:middle}
+.dot.l0{width:10px;height:2px;border-radius:0;background:var(--tan)}
+.dot.l1{width:8px;height:8px;opacity:.5}.dot.l2{width:14px;height:14px;opacity:.78}.dot.l3{width:22px;height:22px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:.84rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+ul.every{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px 28px}
+ul.every.one{grid-template-columns:1fr}
+ul.every li{padding-left:26px;position:relative}
+ul.every li::before{content:"";position:absolute;left:0;top:.42em;width:14px;height:8px;border-left:2.5px solid var(--coral-bright);border-bottom:2.5px solid var(--coral-bright);transform:rotate(-45deg);transform-origin:left bottom}
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+.row{display:flex;flex-direction:column;gap:3px}
+.lab{font-size:.88rem;font-weight:600}
+.track{display:flex;align-items:center;gap:10px}
+.fill{height:20px;border-radius:6px;background:var(--tan)}
+.fill.us{background:var(--green)}
+.val{font-family:var(--display);font-weight:900;font-variant-numeric:tabular-nums;white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--card);border:1.5px solid var(--green);color:var(--green);border-radius:999px;padding:6px 16px;font-weight:800;font-size:.92rem;font-family:var(--display)}
+.note{border-left:4px solid var(--coral-light);padding:4px 0 4px 14px;color:var(--muted);font-size:.93rem}
+
+/* steps and the clickable step bar */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.review::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--paper)}
+.topbar .in{padding-block:10px}
+.stepper{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0}
+.stepper ol{list-style:none;margin:0;padding:0;display:flex;align-items:center}
+.stepper li{display:flex;align-items:center}
+.stepper li + li::before{content:"";width:clamp(8px,3vw,30px);height:2px;background:var(--line)}
+.stepper li.seen + li::before,.stepper li.seen + li.seen::before{background:var(--green)}
+.dotbtn{width:30px;height:30px;border-radius:50%;border:2px solid var(--tan);background:var(--card);color:var(--muted);font-family:var(--display);font-weight:900;font-size:.85rem;display:grid;place-items:center;padding:0;font-variant-numeric:tabular-nums}
+.dotbtn:hover{border-color:var(--coral-bright)}
+li.seen .dotbtn{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+li.now .dotbtn{border-color:var(--coral-bright);background:var(--coral-bright);color:#fff}
+.stepname{font-family:var(--display);font-weight:800;color:var(--green);font-size:.82rem;white-space:nowrap}
+.stepnav{padding-block:6px 40px}
+.stepnav .in{flex-direction:row;justify-content:space-between;align-items:center;gap:12px}
+.back{background:none;border:0;color:var(--muted);font-weight:700;padding:10px 4px;text-decoration:underline}
+.next{margin-left:auto}
+
+/* "Your turn" panel: the questions, set apart from the reading */
+.asks{background:var(--green-deep);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:14px;width:100%;margin-top:10px;box-shadow:0 22px 44px -30px rgba(44,58,32,.9)}
+.asks.plain{background:none;box-shadow:none;padding:0;margin:0}
+.askhead{display:flex;flex-direction:column;gap:2px;font-family:var(--display);font-weight:900;font-size:1.5rem;line-height:1.1;color:var(--paper)}
+.askhead span{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-light);font-weight:800;order:-1}
+.askhead::after{content:"Tap your answers below. Every question is optional.";font-family:var(--body);font-weight:400;font-size:.92rem;color:rgba(253,247,240,.78);margin-top:4px}
+.q{background:var(--card);border-radius:18px;padding:20px;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:12px;min-width:0}
+.q > *{grid-column:2}
+.badge{grid-column:1;grid-row:1 / span 2;width:38px;height:38px;border-radius:50%;background:var(--coral-bright);color:#fff;font-family:var(--display);font-weight:900;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.q.done .badge{background:var(--green)}
+.q.done .badge span{display:none}
+.q.done .badge::after{content:"";width:13px;height:7px;border-left:3px solid #fff;border-bottom:3px solid #fff;transform:translateY(-2px) rotate(-45deg)}
+.qt{font-size:1.18rem;line-height:1.3;font-weight:800}
+.hint{color:var(--muted);font-size:.86rem;margin-top:-8px}
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}
+.choice{text-align:left;background:#fff;border:2px solid var(--tan);border-radius:12px;padding:12px 14px;font-weight:700;color:var(--ink);line-height:1.3;transition:background .15s,border-color .15s}
+.choice:hover{border-color:var(--coral-bright)}
+.choice[aria-pressed=true]{background:var(--coral-bright);border-color:var(--coral-bright);color:#fff}
+.choice:disabled{opacity:.4;cursor:not-allowed}
+.nums{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.nums .choice{text-align:center;font-family:var(--display);font-weight:900;font-size:1.25rem;padding:12px 0;font-variant-numeric:tabular-nums}
+.ends{display:flex;justify-content:space-between;color:var(--muted);font-size:.85rem;margin-top:-4px}
+.field{display:flex;flex-direction:column;gap:6px;font-weight:700}
+textarea,input[type=text]{font:inherit;font-weight:400;width:100%;border:2px solid var(--tan);border-radius:12px;padding:11px 13px;background:#fff;color:var(--ink)}
+#final{grid-template-columns:minmax(0,1fr)}
+#final > *{grid-column:1}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.8rem;line-height:1.45}
+.status{font-weight:700;color:var(--green);min-height:1.4em}
+@media (max-width:760px){
+  .band{padding-block:38px}
+  .admin-bar{top:12px;right:12px}
+  .admin-login-btn{padding:4px 11px;font-size:.78rem}
+  .rail{grid-template-columns:1fr;gap:14px}
+  .rail::before{left:36px;right:auto;top:36px;bottom:36px;border-top:0;border-left:2px dashed var(--tan)}
+  .stage{flex-direction:row;align-items:flex-start}
+  .glance{flex:1 1 100%;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .fact{flex-direction:column;gap:2px;padding:12px}
+  .topbar .in > a:first-child{display:none}
+  .stepper{align-items:flex-start}
+  .topbar .in{gap:8px}
+  .dotbtn{width:24px;height:24px;font-size:.75rem}
+  .q{padding:16px;column-gap:10px}
+  .badge{width:32px;height:32px}
+  .asks{padding:16px;border-radius:20px}
+}
+@media (prefers-reduced-motion:reduce){.pbtrack i,.choice{transition:none}}
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<div class="home glow" id="home">
+  <div class="admin-bar">
+    <a href="/admin" class="admin-login-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      <span>Login as admin</span>
+    </a>
+  </div>
+  <div class="in">
+    <img class="logo" src="logo.png" alt="Belly n Bloom" width="822" height="197">
+    <p class="tag">Nutrition for Before, During &amp; Beyond Pregnancy</p>
+    <div class="grow" aria-hidden="true"><svg class="bloom" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="50" rx="7" ry="5" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><path d="M32 45 C32 40 35 37 39 36" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/></svg><svg class="bloom" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 58 V36" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/><path d="M32 50 C24 49 19 43 20 38 C26 39 31 44 32 50Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><path d="M32 46 C40 45 45 39 44 34 C38 35 33 40 32 46Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/></svg><svg class="bloom" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 58 V30" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/><path d="M32 50 C24 49 19 43 20 38 C26 39 31 44 32 50Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><path d="M32 46 C40 45 45 39 44 34 C38 35 33 40 32 46Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><ellipse cx="32" cy="20" rx="5.5" ry="10" transform="rotate(0 32 30)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/></svg><svg class="bloom" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 58 V28" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/><path d="M32 50 C24 49 19 43 20 38 C26 39 31 44 32 50Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><path d="M32 46 C40 45 45 39 44 34 C38 35 33 40 32 46Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><ellipse cx="32" cy="19" rx="4.6" ry="9" transform="rotate(-40 32 28)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="19" rx="4.6" ry="9" transform="rotate(0 32 28)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="19" rx="4.6" ry="9" transform="rotate(40 32 28)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/></svg><svg class="bloom" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 58 V34" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/><path d="M32 50 C24 49 19 43 20 38 C26 39 31 44 32 50Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><path d="M32 46 C40 45 45 39 44 34 C38 35 33 40 32 46Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><ellipse cx="32" cy="13.5" rx="4.4" ry="8.5" transform="rotate(0 32 22)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="13.5" rx="4.4" ry="8.5" transform="rotate(60 32 22)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="13.5" rx="4.4" ry="8.5" transform="rotate(120 32 22)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="13.5" rx="4.4" ry="8.5" transform="rotate(180 32 22)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="13.5" rx="4.4" ry="8.5" transform="rotate(240 32 22)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="13.5" rx="4.4" ry="8.5" transform="rotate(300 32 22)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><circle cx="32" cy="22" r="3.2" fill="var(--coral-bright)"/></svg></div>
+    <span class="eyebrow">Coming soon</span>
+    <h1>Something good is growing</h1>
+    <p class="lead">We are developing everyday bars and caffeine-free brews made for each stage, from before pregnancy through breastfeeding. Our site is under construction while the first products take shape.</p>
+    <div class="invite">
+      <h3>Are you a clinician or nutrition expert?</h3>
+      <p>Help shape our first products. Take a short look at the concept and share your view in about five minutes.</p>
+      <a class="btn" href="#review" id="go-review">Review the concept</a>
+    </div>
+  </div>
+  <div class="foot"><div class="in">
+    <span>Get in touch: <span class="addr">projects_us@vaanipureventures.com</span> &middot; <a href="/admin" style="color:var(--muted);font-weight:700">Login as admin</a></span>
+    <span>&copy; 2026 Belly n Bloom</span>
+  </div></div>
+</div>
+
+<!-- REVIEW -->
+<div class="review" id="review" hidden>
+  <div class="topbar"><div class="in">
+    <a href="#home" aria-label="Belly n Bloom home"><img src="logo.png" alt="Belly n Bloom" width="822" height="197"></a>
+    <nav class="stepper" id="stepper" aria-label="Steps" hidden>
+      <ol id="steplist"></ol>
+      <span class="stepname" id="stepname"></span>
+    </nav>
+    <a href="#home">Home</a>
+  </div></div>
+
+  <div class="gatewrap glow" id="gatewrap"><div class="in">
+    <div class="gate">
+      <span class="eyebrow">Before you read</span>
+      <h3>A short confidentiality note</h3>
+      <p>We are sharing an early product concept with you so we can learn from your opinion. By continuing, you agree to two things:</p>
+      <ol>
+        <li>You will keep what you see here private and will not share or forward it.</li>
+        <li>You will use it only to give us your feedback.</li>
+      </ol>
+      <p class="muted">This does not cover anything that is already public or that you already knew. It lasts for two years. You are free to stop at any time, and Belly n Bloom may use any feedback you choose to give to improve its products.</p>
+      <label class="agree" for="nda-ok"><input type="checkbox" id="nda-ok"><span>I agree to keep this concept confidential.</span></label>
+      <button type="button" class="btn" id="nda-go" disabled>Open the concept</button>
+    </div>
+  </div></div>
+
+  <div id="content" hidden>
+  <div class="step" data-title="Welcome">
+  <section class="band intro glow"><div class="in">
+    <div class="txt">
+      <span class="eyebrow">Concept review for clinicians</span>
+      <h1>A bar and a warm drink for <em>every stage</em> of pregnancy</h1>
+      <p class="lead">Belly n Bloom is developing shelf-stable bars and caffeine-free drinks matched to what changes from before conception through breastfeeding.</p>
+      <p>They are foods that sit alongside a prenatal vitamin and medical care. They do not replace either. Seven short steps, each with a few quick questions. Skip any you like, and tap the step numbers at the top to move around.</p>
+    </div>
+    <div class="glance">
+      <div class="fact"><b>7</b><span>bars</span></div>
+      <div class="fact"><b>5</b><span>brews</span></div>
+      <div class="fact"><b>5</b><span>minutes</span></div>
+    </div>
+    <div class="asks" data-q="practice,asks"><div class="askhead">Your turn<span>About you</span></div></div>
+  </div></section>
+  </div>
+
+  <div class="step" data-title="The journey">
+  <section class="band sage"><div class="in">
+    <div><h2>The journey</h2><p class="sub">One bar and one brew for each stage</p></div>
+    <div class="rail">
+      <div class="stage">
+        <svg class="bloom" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="50" rx="7" ry="5" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><path d="M32 45 C32 40 35 37 39 36" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/></svg>
+        <div class="box">
+          <div class="when">Before pregnancy</div>
+          <span class="kind">Bar</span>
+          <div class="item bar">Prepare bar</div>
+          <span class="kind">Brew</span>
+          <div class="item brew">Vanilla rooibos tea</div>
+        </div>
+      </div>
+      <div class="stage">
+        <svg class="bloom" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 58 V36" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/><path d="M32 50 C24 49 19 43 20 38 C26 39 31 44 32 50Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><path d="M32 46 C40 45 45 39 44 34 C38 35 33 40 32 46Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <div class="box">
+          <div class="when">First trimester</div>
+          <span class="kind">Bar</span>
+          <div class="item bar">First trimester bar</div>
+          <span class="kind">Brew</span>
+          <div class="item brew">Ginger lemon tea</div>
+        </div>
+      </div>
+      <div class="stage">
+        <svg class="bloom" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 58 V30" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/><path d="M32 50 C24 49 19 43 20 38 C26 39 31 44 32 50Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><path d="M32 46 C40 45 45 39 44 34 C38 35 33 40 32 46Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><ellipse cx="32" cy="20" rx="5.5" ry="10" transform="rotate(0 32 30)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/></svg>
+        <div class="box">
+          <div class="when">Second trimester</div>
+          <span class="kind">Bar</span>
+          <div class="item bar">Second trimester bar</div>
+          <span class="kind">Brew</span>
+          <div class="item brew">Vanilla oat latte</div>
+        </div>
+      </div>
+      <div class="stage">
+        <svg class="bloom" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 58 V28" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/><path d="M32 50 C24 49 19 43 20 38 C26 39 31 44 32 50Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><path d="M32 46 C40 45 45 39 44 34 C38 35 33 40 32 46Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><ellipse cx="32" cy="19" rx="4.6" ry="9" transform="rotate(-40 32 28)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="19" rx="4.6" ry="9" transform="rotate(0 32 28)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="19" rx="4.6" ry="9" transform="rotate(40 32 28)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/></svg>
+        <div class="box">
+          <div class="when">Third trimester</div>
+          <span class="kind">Bar</span>
+          <div class="item bar">Third trimester bar</div>
+          <span class="kind">Brew</span>
+          <div class="item brew">Vanilla oat latte</div>
+        </div>
+      </div>
+      <div class="stage">
+        <svg class="bloom" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 58 V34" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/><path d="M32 50 C24 49 19 43 20 38 C26 39 31 44 32 50Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><path d="M32 46 C40 45 45 39 44 34 C38 35 33 40 32 46Z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><ellipse cx="32" cy="13.5" rx="4.4" ry="8.5" transform="rotate(0 32 22)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="13.5" rx="4.4" ry="8.5" transform="rotate(60 32 22)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="13.5" rx="4.4" ry="8.5" transform="rotate(120 32 22)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="13.5" rx="4.4" ry="8.5" transform="rotate(180 32 22)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="13.5" rx="4.4" ry="8.5" transform="rotate(240 32 22)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><ellipse cx="32" cy="13.5" rx="4.4" ry="8.5" transform="rotate(300 32 22)" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.6"/><circle cx="32" cy="22" r="3.2" fill="var(--coral-bright)"/></svg>
+        <div class="box">
+          <div class="when">After birth</div>
+          <span class="kind">Bars</span>
+          <div class="item bar">Lactation bar</div>
+          <div class="item bar">Strength bar</div>
+          <div class="item bar">Lactation + Strength bar</div>
+          <span class="kind">Brews</span>
+          <div class="item brew">Cinnamon oat malt</div>
+          <div class="item brew">Chocolate oat latte</div>
+        </div>
+      </div>
+    </div>
+    <div class="asks" data-q="value,need,trimester"><div class="askhead">Your turn<span>The journey</span></div></div>
+  </div></section>
+  </div>
+
+  <div class="step" data-title="The bars">
+  <section class="band"><div class="in">
+    <div><h2>The bars</h2><p class="sub">What each one is designed to do</p></div>
+    <div class="cards">
+      <div class="card"><svg class="ic" viewBox="0 0 40 40" aria-hidden="true"><g transform="rotate(-14 20 20)"><rect x="5" y="13" width="30" height="14" rx="3.5" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.8"/><circle cx="13" cy="20" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="17.5" r="1.4" fill="var(--coral-bright)"/><circle cx="27" cy="21" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="23" r="1.4" fill="var(--coral-bright)"/></g></svg><div class="ct"><span class="st">Before pregnancy</span><h3>Prepare bar</h3><p>For the months before conception.</p><div class="tags"><span>Folate</span><span>Iron</span><span>Choline</span></div></div></div>
+      <div class="card"><svg class="ic" viewBox="0 0 40 40" aria-hidden="true"><g transform="rotate(-14 20 20)"><rect x="5" y="13" width="30" height="14" rx="3.5" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.8"/><circle cx="13" cy="20" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="17.5" r="1.4" fill="var(--coral-bright)"/><circle cx="27" cy="21" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="23" r="1.4" fill="var(--coral-bright)"/></g></svg><div class="ct"><span class="st">First trimester</span><h3>First trimester bar</h3><p>Small, light and low in aroma for queasy weeks.</p><div class="tags"><span>Ginger</span><span>Vitamin B6</span><span>Folate</span></div></div></div>
+      <div class="card"><svg class="ic" viewBox="0 0 40 40" aria-hidden="true"><g transform="rotate(-14 20 20)"><rect x="5" y="13" width="30" height="14" rx="3.5" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.8"/><circle cx="13" cy="20" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="17.5" r="1.4" fill="var(--coral-bright)"/><circle cx="27" cy="21" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="23" r="1.4" fill="var(--coral-bright)"/></g></svg><div class="ct"><span class="st">Second trimester</span><h3>Second trimester bar</h3><p>More nourishment as growth picks up.</p><div class="tags"><span>Protein</span><span>Iron</span><span>Choline</span></div></div></div>
+      <div class="card"><svg class="ic" viewBox="0 0 40 40" aria-hidden="true"><g transform="rotate(-14 20 20)"><rect x="5" y="13" width="30" height="14" rx="3.5" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.8"/><circle cx="13" cy="20" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="17.5" r="1.4" fill="var(--coral-bright)"/><circle cx="27" cy="21" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="23" r="1.4" fill="var(--coral-bright)"/></g></svg><div class="ct"><span class="st">Third trimester</span><h3>Third trimester bar</h3><p>The most protein of the pregnancy bars.</p><div class="tags"><span>Protein</span><span>Fiber</span><span>Magnesium</span></div></div></div>
+      <div class="card"><svg class="ic" viewBox="0 0 40 40" aria-hidden="true"><g transform="rotate(-14 20 20)"><rect x="5" y="13" width="30" height="14" rx="3.5" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.8"/><circle cx="13" cy="20" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="17.5" r="1.4" fill="var(--coral-bright)"/><circle cx="27" cy="21" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="23" r="1.4" fill="var(--coral-bright)"/></g></svg><div class="ct"><span class="st">After birth</span><h3>Lactation bar</h3><p>For breastfeeding days. An optional herbal version would be sold as a supplement, not for use in pregnancy.</p><div class="tags"><span>Oats and flaxseed</span><span>Choline</span><span>Protein</span></div></div></div>
+      <div class="card"><svg class="ic" viewBox="0 0 40 40" aria-hidden="true"><g transform="rotate(-14 20 20)"><rect x="5" y="13" width="30" height="14" rx="3.5" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.8"/><circle cx="13" cy="20" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="17.5" r="1.4" fill="var(--coral-bright)"/><circle cx="27" cy="21" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="23" r="1.4" fill="var(--coral-bright)"/></g></svg><div class="ct"><span class="st">After birth</span><h3>Strength bar</h3><p>For recovery after birth.</p><div class="tags"><span>About 15 g protein</span><span>Iron</span><span>Magnesium</span></div></div></div>
+      <div class="card"><svg class="ic" viewBox="0 0 40 40" aria-hidden="true"><g transform="rotate(-14 20 20)"><rect x="5" y="13" width="30" height="14" rx="3.5" fill="var(--coral-soft)" stroke="var(--coral-bright)" stroke-width="1.8"/><circle cx="13" cy="20" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="17.5" r="1.4" fill="var(--coral-bright)"/><circle cx="27" cy="21" r="1.4" fill="var(--coral-bright)"/><circle cx="20" cy="23" r="1.4" fill="var(--coral-bright)"/></g></svg><div class="ct"><span class="st">After birth</span><h3>Lactation + Strength bar</h3><p>One bar for mothers who are breastfeeding and rebuilding strength.</p><div class="tags"><span>Protein</span><span>Choline</span><span>Oats and flaxseed</span></div></div></div>
+    </div>
+    <div class="panel">
+      <h3>Where each bar puts its emphasis</h3>
+      <div class="scroll"><table class="matrix"><thead><tr><th scope="col">Emphasis</th><th scope="col">Before</th><th scope="col">Trimester 1</th><th scope="col">Trimester 2</th><th scope="col">Trimester 3</th><th scope="col">Lactation</th><th scope="col">Strength</th><th scope="col">Lactation + Strength</th></tr></thead><tbody><tr><th scope="row">Protein</th><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td></tr><tr><th scope="row">Folate</th><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td></tr><tr><th scope="row">Iron</th><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td></tr><tr><th scope="row">Choline</th><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td></tr><tr><th scope="row">Fiber</th><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td></tr><tr><th scope="row">Magnesium</th><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td><td><span class="dot l2" aria-hidden="true"></span><span class="sr">moderate</span></td></tr><tr><th scope="row">Ginger and vitamin B6</th><td><span class="dot l0" aria-hidden="true"></span><span class="sr">none</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l0" aria-hidden="true"></span><span class="sr">none</span></td><td><span class="dot l0" aria-hidden="true"></span><span class="sr">none</span></td><td><span class="dot l0" aria-hidden="true"></span><span class="sr">none</span></td><td><span class="dot l0" aria-hidden="true"></span><span class="sr">none</span></td></tr><tr><th scope="row">Oats and flaxseed</th><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td><td><span class="dot l1" aria-hidden="true"></span><span class="sr">some</span></td><td><span class="dot l3" aria-hidden="true"></span><span class="sr">high</span></td></tr></tbody></table></div>
+      <div class="legend"><span><i class="dot l3"></i>high</span><span><i class="dot l2"></i>moderate</span><span><i class="dot l1"></i>some</span><span><i class="dot l0"></i>none</span><span>Design intent, to be confirmed with clinical input.</span></div>
+    </div>
+    <div class="panel">
+      <h3>True of every bar</h3>
+      <ul class="every">
+        <li>Available in a range of familiar flavors</li>
+        <li>160 to 210 calories</li>
+        <li>8 to 15 g of plant protein</li>
+        <li>22 g of carbohydrate or less, with 4 g of added sugar or less</li>
+        <li>Dairy-free</li>
+        <li>No caffeine, artificial sweeteners or sugar alcohols</li>
+      </ul>
+    </div>
+  </div></section>
+
+  <section class="band blush"><div class="in">
+    <div><h2>How the bars compare</h2><p class="sub">Per bar, against what patients buy today</p></div>
+    <div class="charts">
+      <div class="panel"><h3>Protein</h3>
+        <div class="row"><span class="lab">A mainstream granola bar</span><div class="track"><div class="fill" style="width:16%"></div><span class="val">3 g</span></div></div>
+        <div class="row"><span class="lab">A leading lactation bar</span><div class="track"><div class="fill" style="width:27%"></div><span class="val">5 g</span></div></div>
+        <div class="row"><span class="lab">Belly n Bloom granola bar</span><div class="track"><div class="fill us" style="width:45%"></div><span class="val">8 to 9 g</span></div></div>
+        <div class="row"><span class="lab">Belly n Bloom protein bar</span><div class="track"><div class="fill us" style="width:75%"></div><span class="val">13 to 15 g</span></div></div>
+      </div>
+      <div class="panel"><h3>Added sugar</h3>
+        <div class="row"><span class="lab">A mainstream granola bar</span><div class="track"><div class="fill" style="width:75%"></div><span class="val">11 g</span></div></div>
+        <div class="row"><span class="lab">Belly n Bloom, every bar</span><div class="track"><div class="fill us" style="width:27%"></div><span class="val">4 g or less</span></div></div>
+      </div>
+    </div>
+    <p class="muted">Other brands' figures are from their product pages, November 2026. Belly n Bloom figures are design targets, not lab results.</p>
+    <div class="asks" data-q="postpartum,traits"><div class="askhead">Your turn<span>The bars</span></div></div>
+  </div></section>
+  </div>
+
+  <div class="step" data-title="The brews">
+  <section class="band"><div class="in">
+    <div><h2>The brews</h2><p class="sub">Giving a warm cup back</p></div>
+    <p class="lead">Pregnancy takes a lot of drinks off the table: alcohol, most coffee and many herbal teas. Each brew is a caffeine-free cup made for one stage.</p>
+    <div class="cards">
+      <div class="card"><svg class="ic" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 17h20v7a8 8 0 0 1-8 8h-4a8 8 0 0 1-8-8z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.8" stroke-linejoin="round"/><path d="M28 19h3a4 4 0 0 1 0 8h-3" fill="none" stroke="var(--green)" stroke-width="1.8"/><path d="M14 7q2.5 3 0 6M21 7q2.5 3 0 6" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round"/></svg><div class="ct"><span class="st">Before pregnancy</span><h3>Vanilla rooibos tea</h3><p>A naturally sweet, caffeine-free everyday tea.</p></div></div>
+      <div class="card"><svg class="ic" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 17h20v7a8 8 0 0 1-8 8h-4a8 8 0 0 1-8-8z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.8" stroke-linejoin="round"/><path d="M28 19h3a4 4 0 0 1 0 8h-3" fill="none" stroke="var(--green)" stroke-width="1.8"/><path d="M14 7q2.5 3 0 6M21 7q2.5 3 0 6" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round"/></svg><div class="ct"><span class="st">First trimester</span><h3>Ginger lemon tea</h3><p>Real ginger and lemon for queasy days.</p></div></div>
+      <div class="card"><svg class="ic" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 17h20v7a8 8 0 0 1-8 8h-4a8 8 0 0 1-8-8z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.8" stroke-linejoin="round"/><path d="M28 19h3a4 4 0 0 1 0 8h-3" fill="none" stroke="var(--green)" stroke-width="1.8"/><path d="M14 7q2.5 3 0 6M21 7q2.5 3 0 6" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round"/></svg><div class="ct"><span class="st">Second and third trimester</span><h3>Vanilla oat latte</h3><p>A warm or iced latte mix that carries calcium and vitamin D.</p></div></div>
+      <div class="card"><svg class="ic" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 17h20v7a8 8 0 0 1-8 8h-4a8 8 0 0 1-8-8z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.8" stroke-linejoin="round"/><path d="M28 19h3a4 4 0 0 1 0 8h-3" fill="none" stroke="var(--green)" stroke-width="1.8"/><path d="M14 7q2.5 3 0 6M21 7q2.5 3 0 6" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round"/></svg><div class="ct"><span class="st">After birth</span><h3>Cinnamon oat malt</h3><p>A warm malted grain drink with protein, for recovery.</p></div></div>
+      <div class="card"><svg class="ic" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 17h20v7a8 8 0 0 1-8 8h-4a8 8 0 0 1-8-8z" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1.8" stroke-linejoin="round"/><path d="M28 19h3a4 4 0 0 1 0 8h-3" fill="none" stroke="var(--green)" stroke-width="1.8"/><path d="M14 7q2.5 3 0 6M21 7q2.5 3 0 6" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round"/></svg><div class="ct"><span class="st">Breastfeeding</span><h3>Chocolate oat latte</h3><p>Protein and extra fluids, hot or iced.</p></div></div>
+    </div>
+    <p class="muted">No licorice, hibiscus, raspberry leaf or other herbs that carry pregnancy cautions.</p>
+    <div class="asks" data-q="brews"><div class="askhead">Your turn<span>The brews</span></div></div>
+  </div></section>
+  </div>
+
+  <div class="step" data-title="Safety">
+  <section class="band sage"><div class="in">
+    <div><h2>Safety and quality</h2><p class="sub">Designed for pregnancy from the start</p></div>
+    <div class="cards">
+      <div class="panel"><h3>Works alongside a prenatal</h3><ul class="every one">
+        <li>Vitamins and minerals at 10 to 25% of daily needs per bar</li>
+        <li>Two bars a day plus a typical prenatal stay under every upper limit</li>
+        <li>Folic acid capped; no preformed vitamin A</li>
+        <li>Iron paired with vitamin C to help absorption</li>
+        <li>Labels use FDA pregnancy and lactation Daily Values</li>
+      </ul></div>
+      <div class="panel"><h3>Conservative on ingredients</h3><ul class="every one">
+        <li>No herbs in pregnancy bars beyond culinary ginger</li>
+        <li>Caffeine-free, confirmed by testing</li>
+        <li>No sugar alcohols or artificial sweeteners</li>
+        <li>Allergens: almond (tree nut) and sesame; dairy-free</li>
+        <li>Nut-free options planned</li>
+      </ul></div>
+      <div class="panel"><h3>Tested and traceable</h3><ul class="every one">
+        <li>Every lot of higher-risk ingredients tested for lead, cadmium, arsenic and mercury</li>
+        <li>Flours heat-treated, since the bars are not baked</li>
+        <li>The optional herbal lactation version is sold as a supplement, labeled not for use in pregnancy, with herbs tested lot by lot</li>
+        <li>Formulas reviewed with a nutrition expert before launch</li>
+      </ul></div>
+    </div>
+    <p class="note">Every product is in development. Each bar and brew will come in a range of familiar flavors. Nothing on this page is a finished formula or a medical claim, and your answers will shape what we build.</p>
+    <div class="asks" data-q="herbs,recommend,trust"><div class="askhead">Your turn<span>Safety and quality</span></div></div>
+  </div></section>
+  </div>
+
+  <div class="step" data-title="How it's sold">
+  <section class="band"><div class="in">
+    <div><h2>How mothers would get it</h2><p class="sub">Simple to find at every stage</p></div>
+    <div class="chips"><span class="chip">Baby registries</span><span class="chip">Stage bundles and gift boxes</span><span class="chip">Monthly subscription</span><span class="chip">Online stores</span><span class="chip">Pharmacy and grocery</span><span class="chip">Samples through clinics</span></div>
+    <p class="muted">Planned channels, to be shaped by your feedback.</p>
+    <div class="asks" data-q="registry,buy,where,price"><div class="askhead">Your turn<span>How it's sold</span></div></div>
+  </div></section>
+  </div>
+
+  <div class="step" data-title="Finish">
+  <section class="band finish" id="finish"><div class="in">
+    <div><h2>Last step</h2><p class="sub">Send us your view</p></div>
+    <div class="asks" data-q="involve"><div class="askhead">Your turn<span>Last step</span></div></div>
+    <div class="asks plain"><div class="q" id="final">
+      <div class="qtop"><h3 class="qt">Anything else? All optional</h3></div>
+      <p class="hint">You can leave these blank and stay anonymous. Your answers are stored privately by Belly n Bloom and used only for product research.</p>
+      <label class="field" for="sv-comment">Anything we should avoid, or any other advice<textarea id="sv-comment" rows="3"></textarea></label>
+      <label class="field" for="sv-name">Your name<input type="text" id="sv-name" autocomplete="off"></label>
+      <label class="field" for="sv-email">Your email, only if you would like us to follow up<input type="text" id="sv-email" autocomplete="off"></label>
+      <button type="button" class="btn" id="sv-send">Send my answers</button>
+    </div></div>
+  </div></section>
+  </div>
+
+  <div class="foot"><div class="in">
+    <span>Questions? Dr. Richa Singhania, <span class="addr">projects_us@vaanipureventures.com</span></span>
+    <span>&copy; 2026 Belly n Bloom. Proprietary and confidential.</span>
+  </div></div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  // Where answers are sent. Leave empty to show the reviewer her answers to copy and email instead.
+  var SUBMIT_URL = "/api/submit";
+  var CONTACT = "projects_us@vaanipureventures.com";
+  var QS = [
+    {"id": "practice", "type": "single", "title": "Which best describes your practice?", "opts": ["OB-GYN", "Maternal-fetal medicine", "Certified nurse-midwife", "Family physician with obstetrics", "Registered dietitian", "Other"]},
+    {"id": "asks", "type": "single", "title": "How often do patients ask you what to eat or drink during pregnancy or breastfeeding?", "opts": ["At most visits", "Often", "Sometimes", "Rarely"]},
+    {"id": "value", "type": "scale", "title": "Overall, how useful would stage-specific foods like these be for your patients?", "lo": "Not useful", "hi": "Very useful"},
+    {"id": "need", "type": "multi", "title": "At which stages do your patients most often struggle to meet their nutrition needs?", "opts": ["Before pregnancy", "First trimester", "Second trimester", "Third trimester", "Recovery after birth", "Breastfeeding"]},
+    {"id": "trimester", "type": "single", "title": "Do nutrition needs differ enough between trimesters to justify a separate bar for each?", "opts": ["Yes, a bar for each trimester", "Two bars would be enough (early and late pregnancy)", "One pregnancy bar is enough", "Not sure"]},
+    {"id": "postpartum", "type": "single", "title": "After birth we plan three bars: lactation, strength, and a combined bar. Which approach makes most sense to you?", "opts": ["All three", "The combined bar only", "Lactation and strength as separate bars", "Not sure"]},
+    {"id": "traits", "type": "multi", "max": 3, "title": "Which characteristics would matter most to you when considering these for patients?", "opts": ["Enough protein", "Low added sugar", "Iron", "Folate", "Choline", "Fiber", "Gentle on nausea", "No herbs during pregnancy", "Tested for heavy metals", "Taste patients will accept"]},
+    {"id": "brews", "type": "scale", "title": "How useful would a caffeine-free drink for each stage be for your patients?", "lo": "Not useful", "hi": "Very useful"},
+    {"id": "herbs", "type": "single", "title": "What is your view of an optional lactation version with shatavari and moringa, sold as a supplement and labeled not for use in pregnancy?", "opts": ["Comfortable", "Comfortable only if evidence and testing are shown", "I would prefer the food-only version", "I would not recommend it"]},
+    {"id": "recommend", "type": "single", "title": "If the products met your expectations, would you be comfortable recommending them to patients?", "opts": ["Yes", "Yes, with conditions", "Not sure", "No"]},
+    {"id": "trust", "type": "multi", "title": "What would you need to see before recommending a product like this?", "opts": ["Formulated with a registered dietitian", "An OB-GYN advisory board", "Published testing results", "A clinical study", "Nutrient levels aligned with ACOG guidance", "Samples to try yourself"]},
+    {"id": "registry", "type": "single", "title": "Would a Belly n Bloom bundle on a baby registry (for example a pregnancy box or a fourth-trimester box) appeal to your patients and their families?", "opts": ["Yes, very likely", "Somewhat", "Unlikely", "Not sure"]},
+    {"id": "buy", "type": "multi", "title": "How do you think patients would most likely buy these?", "opts": ["Single bars or packs", "Monthly subscription", "One bundle per stage", "Gift boxes for showers and registries", "Not sure"]},
+    {"id": "where", "type": "multi", "title": "Where would your patients most likely look for products like these?", "opts": ["Baby registries (Babylist, Amazon, Target)", "Online stores", "Pharmacy", "Grocery store", "Baby and maternity stores", "Samples or recommendations from their clinic", "Hospital discharge or welcome kits"]},
+    {"id": "price", "type": "single", "title": "What price per bar do you think your patients would find reasonable?", "opts": ["Under $2", "$2 to $3", "$3 to $4", "Over $4", "Not sure"]},
+    {"id": "involve", "type": "multi", "title": "Would you be open to any of the following?", "opts": ["Trying samples", "Sharing samples with patients", "Joining a clinical advisory panel", "A 15-minute follow-up call", "None for now"]}
+  ];
+  var byId = {}; QS.forEach(function(q, k){ q.n = k + 1; byId[q.id] = q; });
+  var ans = {}, agreedAt = null, sent = false;
+
+  var home = document.getElementById('home'), review = document.getElementById('review');
+  function route(){
+    var r = location.hash === '#review';
+    home.hidden = r; review.hidden = !r;
+    document.title = r ? 'Belly n Bloom: concept review' : 'Belly n Bloom';
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', route); route();
+
+  var ok = document.getElementById('nda-ok'), go = document.getElementById('nda-go');
+  ok.addEventListener('change', function(){ go.disabled = !ok.checked; });
+  go.addEventListener('click', function(){
+    if(!ok.checked) return;
+    agreedAt = new Date().toISOString();
+    document.getElementById('gatewrap').hidden = true;
+    document.getElementById('content').hidden = false;
+    document.getElementById('stepper').hidden = false;
+    show(0);
+  });
+
+  function el(tag, cls, text){ var n = document.createElement(tag); if(cls) n.className = cls; if(text != null) n.textContent = text; return n; }
+  function answered(q){ var a = ans[q.id]; return Array.isArray(a) ? a.length > 0 : a != null; }
+  function progress(){}
+  function paint(card, q){
+    var multi = q.type === 'multi', cur = ans[q.id];
+    card.classList.toggle('done', answered(q));
+    card.querySelectorAll('.choice').forEach(function(b){
+      var v = q.type === 'scale' ? +b.dataset.v : b.dataset.v;
+      var on = multi ? (cur || []).indexOf(v) > -1 : cur === v;
+      b.setAttribute('aria-pressed', on);
+      b.disabled = !!(multi && q.max && !on && (cur || []).length >= q.max) || sent;
+    });
+  }
+  function build(q){
+    var card = el('div','q'); card.id = 'q-' + q.id;
+    var badge = el('span','badge'); badge.appendChild(el('span',null,String(q.n))); badge.setAttribute('aria-hidden','true'); card.appendChild(badge);
+    var h = el('h3','qt',q.title); h.insertBefore(el('span','sr','Question ' + q.n + ' of ' + QS.length + ': '), h.firstChild); card.appendChild(h);
+    var hint = q.type === 'multi' ? (q.max ? 'Choose up to three.' : 'Tap all that apply.') : q.type === 'scale' ? 'Tap a number from 1 to 5.' : 'Tap one.';
+    card.appendChild(el('p','hint',hint));
+    var wrap = el('div', q.type === 'scale' ? 'nums' : 'choices');
+    var opts = q.type === 'scale' ? [1,2,3,4,5] : q.opts;
+    opts.forEach(function(o, k){
+      var b = el('button','choice',String(o)); b.type = 'button'; b.id = 'opt-' + q.id + '-' + (q.type === 'scale' ? o : k); b.dataset.v = o;
+      if(q.type === 'scale') b.setAttribute('aria-label', o + ' out of 5');
+      b.addEventListener('click', function(){
+        if(q.type === 'multi'){
+          var a = (ans[q.id] || []).slice(), at = a.indexOf(o);
+          if(at > -1) a.splice(at, 1); else a.push(o);
+          ans[q.id] = a.length ? a : undefined; if(!a.length) delete ans[q.id];
+        } else {
+          ans[q.id] = ans[q.id] === o ? undefined : o; if(ans[q.id] === undefined) delete ans[q.id];
+        }
+        paint(card, q); progress();
+      });
+      wrap.appendChild(b);
+    });
+    card.appendChild(wrap);
+    if(q.type === 'scale'){ var ends = el('div','ends'); ends.appendChild(el('span',null,q.lo)); ends.appendChild(el('span',null,q.hi)); card.appendChild(ends); }
+    paint(card, q);
+    return card;
+  }
+  document.querySelectorAll('.asks[data-q]').forEach(function(box){
+    box.dataset.q.split(',').forEach(function(id){ box.appendChild(build(byId[id])); });
+  });
+  progress();
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.step')), cur = 0, seen = {0:true};
+  var list = document.getElementById('steplist');
+  steps.forEach(function(st, k){
+    var li = el('li'), b = el('button','dotbtn',String(k + 1)); b.type = 'button'; b.id = 'dot-' + k;
+    b.setAttribute('aria-label', 'Step ' + (k + 1) + ': ' + st.dataset.title); b.title = st.dataset.title;
+    b.addEventListener('click', function(){ show(k); });
+    li.appendChild(b); list.appendChild(li);
+    var nav = el('div','stepnav'), inn = el('div','in');
+    if(k > 0){ var bk = el('button','back','Back'); bk.type = 'button'; bk.addEventListener('click', function(){ show(k - 1); }); inn.appendChild(bk); }
+    if(k < steps.length - 1){ var nx = el('button','btn next','Next: ' + steps[k + 1].dataset.title); nx.type = 'button'; nx.id = 'next-' + k; nx.addEventListener('click', function(){ show(k + 1); }); inn.appendChild(nx); }
+    nav.appendChild(inn); st.appendChild(nav);
+  });
+  function show(k){
+    cur = k; seen[k] = true;
+    steps.forEach(function(st, j){
+      st.hidden = j !== k;
+      var li = list.children[j]; li.className = (j === k ? 'now ' : '') + (seen[j] ? 'seen' : '');
+      if(j === k) li.firstChild.setAttribute('aria-current','step'); else li.firstChild.removeAttribute('aria-current');
+    });
+    document.getElementById('stepname').textContent = 'Step ' + (k + 1) + ' of ' + steps.length + ': ' + steps[k].dataset.title;
+    window.scrollTo(0, 0);
+  }
+
+  function val(id){ return document.getElementById(id).value.trim(); }
+  function payload(){
+    return {submittedAt:new Date().toISOString(), agreedConfidentialityAt:agreedAt, answers:ans, comment:val('sv-comment'), name:val('sv-name'), email:val('sv-email'), page:location.href.split('#')[0]};
+  }
+  function asText(){
+    var lines = ['Belly n Bloom concept review', 'Confidentiality: agreed ' + (agreedAt || '').slice(0,10), ''];
+    QS.forEach(function(q){
+      var a = ans[q.id]; if(Array.isArray(a)) a = a.join('; ');
+      lines.push(q.n + '. ' + q.title); lines.push('   ' + (a == null || a === '' ? '(no answer)' : a + (q.type === 'scale' ? ' out of 5' : '')));
+    });
+    lines.push('Advice: ' + (val('sv-comment') || '(none)')); lines.push('Name: ' + (val('sv-name') || '(not given)')); lines.push('Email: ' + (val('sv-email') || '(not given)'));
+    return lines.join('\n');
+  }
+  var send = document.getElementById('sv-send');
+  send.addEventListener('click', function(){
+    send.disabled = true; send.textContent = 'Sending';
+    if(!SUBMIT_URL) return thanks(false);
+    var google = SUBMIT_URL.indexOf('script.google.com') > -1;
+    var opts = google ? {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(payload())}
+                      : {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload())};
+    fetch(SUBMIT_URL, opts).then(function(r){ thanks(google || r.ok); }).catch(function(){ thanks(false); });
+  });
+  function thanks(ok){
+    var text = asText();
+    sent = true;
+    document.querySelectorAll('.q').forEach(function(c){ var q = byId[c.id.slice(2)]; if(q) paint(c, q); });
+    var box = document.getElementById('final'); box.textContent = '';
+    box.appendChild(el('span','eyebrow','Thank you'));
+    if(ok){
+      box.appendChild(el('h3','qt','Your answers are with us.'));
+      box.appendChild(el('p',null,'They will shape what we build. If you left your email, we will be in touch.'));
+      return;
+    }
+    box.appendChild(el('h3','qt','One last step: send us your answers'));
+    var p = el('p',null,'Copy the box below and paste it into a reply to the email that brought you here, or send it to ');
+    p.appendChild(el('span','addr',CONTACT)); p.appendChild(document.createTextNode('.')); box.appendChild(p);
+    var out = el('textarea','mono'); out.id = 'sv-answers'; out.rows = 10; out.readOnly = true; out.value = text; out.setAttribute('aria-label','Your answers'); box.appendChild(out);
+    var copy = el('button','btn','Copy my answers'); copy.type = 'button'; copy.id = 'sv-copy';
+    var status = el('p','status'); status.setAttribute('role','status');
+    copy.addEventListener('click', function(){
+      function fb(){ out.focus(); out.select(); status.textContent = 'Your answers are selected. Press Ctrl or Cmd + C to copy.'; }
+      if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(out.value).then(function(){ status.textContent = 'Copied. Paste it into your email reply.'; }).catch(fb); else fb();
+    });
+    box.appendChild(copy); box.appendChild(status);
+  }
+})();
+</script>
+
+</body>
+</html>
